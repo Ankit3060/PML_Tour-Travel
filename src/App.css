@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.font-style{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.searchbar {
+    flex-grow: 1;
+    outline: none;
+    padding: 0.1rem 0.75rem;
+    font-size: 1.125rem;
+    background: none;
+    color: rgb(255, 255, 255);
+    border: none    ;
+}
+
+
+.search-container {
+  /* display: flex; */
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2); /* transparent white */
+  backdrop-filter: blur(8px);           /* blur for frosted glass */
+  -webkit-backdrop-filter: blur(8px);   /* for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+/* 
+.searchbar {
+  flex-grow: 1;
+  outline: none;
+  padding: 0.1rem 0.75rem;
+  background: none;
+  color: white;
+  border: none;
+  font-size: 1.125rem;
+} */
+
+.search-icon {
+  color: white;
+  font-size: 1.25rem;
+}

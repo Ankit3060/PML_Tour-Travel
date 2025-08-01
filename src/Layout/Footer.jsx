@@ -8,8 +8,10 @@ import {
   FaPhone,
   FaEnvelope,
 } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 function Footer() {
+  const navigate = useNavigate();
   return (
     <div className='font-style'>
     <footer className="bg-[#dff5ff] text-black w-full py-8 pl-20 pr-20  bottom-0">
@@ -18,27 +20,27 @@ function Footer() {
 
           <div>
             <h2 className="font-bold text-lg mb-4">CORPORATE</h2>
-            <ul className="list-disc ml-4 space-y-2">
-              <li>About us</li>
-              <li>Privacy Policy</li>
-              <li>Terms & Conditions</li>
-              <li>Contact Us</li>
+            <ul className="list-disc ml-4 space-y-2 cursor-pointer">
+              <li onClick={()=>navigate("/aboutus")}>About us</li>
+              <li onClick={()=>navigate("/privacy")}>Privacy Policy</li>
+              <li onClick={()=>navigate("/condition")}>Terms & Conditions</li>
+              <li onClick={()=>navigate("/contactus")}>Contact Us</li>
             </ul>
           </div>
 
           <div>
             <h2 className="font-bold text-lg mb-4">SERVICES</h2>
-            <ul className="list-disc ml-4 space-y-2">
-              <li>Packages</li>
-              <li>Attractions</li>
-              <li>Land combos</li>
+            <ul className="list-disc ml-4 space-y-2 cursor-pointer">
+              <li onClick={()=>navigate("/packages")}>Packages</li>
+              <li onClick={()=>navigate("/attractions")}>Attractions</li>
+              <li onClick={()=>navigate("/landcombos")}>Land combos</li>
               <li>Pay Now</li>
             </ul>
           </div>
 
           <div>
             <h2 className="font-bold text-lg mb-4">USEFUL LINKS</h2>
-            <ul className="list-disc ml-4 space-y-2">
+            <ul className="list-disc ml-4 space-y-2 cursor-pointer">
               <li>Blog</li>
               <li>Gallery</li>
             </ul>

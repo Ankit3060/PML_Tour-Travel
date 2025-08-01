@@ -2,9 +2,10 @@ import React from "react";
 import bgSearch from "../assets/bgSearch.svg";
 import { FiSearch } from "react-icons/fi";
 import { FiArrowUpRight } from "react-icons/fi";
-
+import { useNavigate } from "react-router-dom";
 
 function SearchBanner() {
+  const navigate = useNavigate();
   return (
     <div
       className="w-full h-[400px] bg-cover bg-center flex flex-col items-center justify-center text-white px-4"
@@ -22,16 +23,22 @@ function SearchBanner() {
       </div>
 
       <div className="flex gap-4 mt-8 flex-wrap justify-center">
-        <button className="bg-[#0583b4] hover:bg-blue-600 cursor-pointer flex items-center gap-2  text-white px-6 py-1 rounded-full text-sm font-medium">
-          View Packages <FiArrowUpRight />
+        <button 
+          onClick={()=>navigate("/packages")}
+          className="bg-[#0583b4] hover:bg-blue-600 cursor-pointer flex items-center gap-2  text-white px-6 py-1 rounded-full text-sm font-medium">
+            View Packages <FiArrowUpRight />
 
         </button>
-        <button className="bg-[#0583b4] hover:bg-blue-600 cursor-pointer flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-medium">
-          Land Combos <FiArrowUpRight />
+        <button 
+          onClick={()=>navigate("/landcombos")}
+          className="bg-[#0583b4] hover:bg-blue-600 cursor-pointer flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-medium">
+            Land Combos <FiArrowUpRight />
 
         </button>
-        <button className="bg-[#0583b4] hover:bg-blue-600 cursor-pointer flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-medium">
-          Attractions <FiArrowUpRight />
+        <button 
+          onClick={()=>navigate("/attractions")}
+          className="bg-[#0583b4] hover:bg-blue-600 cursor-pointer flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-medium">
+            Attractions <FiArrowUpRight />
 
         </button>
       </div>

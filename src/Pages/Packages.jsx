@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Card from "../Components/Card";
 import SearchBanner from "../Components/SearchBanner";
+import ThingsToDo from "../Components/ThingsToDo";
 
 const Packages = () => {
   const [data, setData] = useState([]);
@@ -25,13 +25,14 @@ const Packages = () => {
     <div>
     <SearchBanner />
     <div className="p-4 px-20">
-      <h1 className="text-4xl font-light ml-11">Top Packages for Dubai</h1>
+      <h1 className="text-4xl font-light ml-5">Top Packages for Dubai</h1>
       <div className="flex flex-wrap gap-7 p-12">
         {data.map(pkg => (
           <Card key={pkg._id} pkg={pkg} />
         ))}
       </div>
     </div>
+    <ThingsToDo />
     </div>
   );
 };

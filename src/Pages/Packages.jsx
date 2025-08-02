@@ -23,7 +23,7 @@ const Packages = () => {
 
   return (
     <div>
-    <SearchBanner />
+    <SearchBanner title="Packages created for you" buttonText={true} searchBar={true}/>
     <div className="p-4 px-20">
       <h1 className="text-4xl font-light ml-5">Top Packages for Dubai</h1>
       <div className="flex flex-wrap gap-7 p-12">

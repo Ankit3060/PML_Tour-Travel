@@ -22,7 +22,7 @@ function LandCombo() {
     
   return (
     <div>
-        <SearchBanner />
+        <SearchBanner title="Land Combos for you!" buttonText={true} searchBar={true}/>
         <h1 className="text-4xl font-light ml-24 mt-5">Trending   </h1>
         <div className='flex flex-wrap gap-7 p-12'>
             {data.map(attract=>(

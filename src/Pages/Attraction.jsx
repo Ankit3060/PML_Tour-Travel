@@ -21,7 +21,7 @@ function Attraction() {
     
   return (
     <div>
-        <SearchBanner />
+        <SearchBanner title="Attractions in Dubai" buttonText={false} searchBar={true}/>
         <h1 className="text-4xl font-light ml-24 mt-5">Attractions   </h1>
         <div className='flex flex-wrap gap-7 p-12'>
             {data.map(attract=>(

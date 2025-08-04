@@ -13,6 +13,7 @@ import AboutUs from './Pages/AboutUs';
 import Privacy from './Pages/Privacy';
 import Conditions from './Pages/Conditions';
 import ContactUs from './Pages/ContactUs';
+import ReviewLandCombo from './Review/ReviewLandCombo';
 
 function App() {
 
@@ -27,7 +28,8 @@ function App() {
         {path: '/attraction/:id', element: <ReviewAttraction />},
         {path: '/attractions/:categoryId', element: <AttractionFilter />},
         {path: '/landcombos', element: <LandCombo />},
-        {path: '/aboutus', element: <AboutUs />},
+        {path: '/landcombos/:id', element: <ReviewLandCombo />},
+        {path: '/aboutus', element: <AboutUs />}, 
         {path: '/privacy', element: <Privacy />},
         {path: '/condition', element: <Conditions />},
         {path: '/contactus', element: <ContactUs />},

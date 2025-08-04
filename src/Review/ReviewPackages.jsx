@@ -3,10 +3,15 @@ import { useLocation } from 'react-router-dom';
 import { FaClock } from 'react-icons/fa6';
 import { AiFillSchedule } from 'react-icons/ai';
 import { FaRegAddressCard } from 'react-icons/fa';
+import ReviewFooter from './ReviewFooter';
 
 function ReviewPackages() {
   const { state } = useLocation();
   const { pkg } = state;
+
+  const price = pkg.price.filter((item)=> item.travelerType === 'adult')
+                         .map((item)=>item.price);
+  // console.log(price)
 
   return (
     <div className="mb-20 flex flex-col">
@@ -126,7 +131,7 @@ function ReviewPackages() {
               ))}
             </ol> 
       </div>
-
+      <ReviewFooter price={price}/>
     </div>
   );
 }

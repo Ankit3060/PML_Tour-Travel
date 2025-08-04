@@ -1,9 +1,15 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 function Header() {
+  const location = useLocation();
   const logo =
     "https://res.cloudinary.com/ddxawuqwy/image/upload/v1708420873/packages/mvlogo_mc4ai4.png";
+
+  
+  const isAttractionActive =
+    location.pathname.startsWith("/attractions") ||
+    location.pathname.startsWith("/attraction");
 
   return (
     <nav className="bg-white px-10 py-1 shadow-md sticky top-0 z-50">
@@ -35,16 +41,14 @@ function Header() {
             Packages
           </NavLink>
 
-          <NavLink
+          <Link
             to="/attractions"
-            className={({ isActive }) =>
-              `inline-block pb-3 ${
-                isActive ? "border-b-4 text-black border-black" : ""
-              } text-[#625d5d] hover:text-black text-[17.5px]`
-            }
+            className={`inline-block pb-3 ${
+              isAttractionActive ? "border-b-4 text-black border-black" : ""
+            } text-[#625d5d] hover:text-black text-[17.5px]`}
           >
             Attractions
-          </NavLink>
+          </Link>
 
           <NavLink
             to="/landcombos"

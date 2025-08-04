@@ -4,10 +4,10 @@ import ReviewFooter from './ReviewFooter';
 
 function ReviewAttraction() {
   const { state } = useLocation();
-  const { attract } = state;
+  const { attract } = state || {};
 
-  const price = attract.price.filter((item)=>item.adultPrice).map((item)=>item.adultPrice)
-  // console.log(price[0])
+  const price = attract.price.filter((item)=>item.adultPrice).map((item)=>item.adultPrice);
+//   console.log(price )
 
   return (
     <div className="mb-20 flex flex-col">
@@ -75,7 +75,7 @@ function ReviewAttraction() {
         <p className='text-xl'>{attract.note}</p>
       </div>)}
 
-      <ReviewFooter price={price[0]}/>
+      <ReviewFooter price={price} />
 
     </div>
   );

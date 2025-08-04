@@ -4,15 +4,19 @@ import { useNavigate } from "react-router-dom";
 function ThingsToDo() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const res = await fetch("https://admin.magicalvacation.com/api/v1/categories");
         const result = await res.json();
         setData(result.data || []);
       } catch (error) {
         console.error("Error fetching data:", error);
+      }finally{
+        setLoading(false);
       }
     };
     fetchData();
@@ -45,7 +49,18 @@ const renderBox = (item, height = "h-[240px]") => {
   );
 };
 
-
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[rgb(214, 228, 239)] flex items-center justify-center">
+        <div className="bg-white rounded-2xl p-8 shadow-xl">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading data...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
   
 
   return (

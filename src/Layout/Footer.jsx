@@ -9,12 +9,21 @@ import {
   FaEnvelope,
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useLocation, useMatch } from 'react-router-dom';
 
 function Footer() {
   const navigate = useNavigate();
+
+  const location = useLocation();
+  // const hiddenPaths = [`attraction/:id`];
+  const hideFooter = /^\/attraction\/[^/]+$/.test(location.pathname) || 
+    /^\/landcombos\/[^/]+$/.test(location.pathname) || /^\/packages\/[^/]+$/.test(location.pathname);
+  if (hideFooter) return null;
+
+
   return (
     <div className='font-style'>
-    <footer className="bg-[#dff5ff] text-black w-full py-8 pl-20 pr-20  bottom-0">
+    <footer className="bg-[#dff5ff] text-black w-full py-8 pl-20  pr-20  bottom-0">
       <div className="w-full mx-auto">
         <div className=" flex relative justify-center gap-[17rem]">
 

@@ -35,7 +35,7 @@ function ContactUs() {
           <input type="tel" placeholder="Your mobile number.." className="border border-gray-300 p-2 rounded mb-4 w-full" maxLength={10} minLength={10}/>
           <label className="block mb-2">Message:</label>
           <textarea placeholder="Write something.." className="border border-gray-300 p-2 rounded mb-4 w-full"></textarea>
-          <button type="submit" className="bg-blue-500 text-white p-2 rounded">Send</button>
+          <button type="submit" className="bg-blue-400  p-2 rounded">Submit</button>
         </form>
         
       </div>

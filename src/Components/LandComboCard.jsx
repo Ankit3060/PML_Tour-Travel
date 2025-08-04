@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function LandComboCard({ attract }) {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/attraction/${attract._id}`, { state: { attract } });  
+        navigate(`/landcombos/${attract._id}`, { state: { attract } });  
     }
 
   return (

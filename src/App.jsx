@@ -15,6 +15,7 @@ import Conditions from './Pages/Conditions';
 import ContactUs from './Pages/ContactUs';
 import ReviewLandCombo from './Review/ReviewLandCombo';
 import {ToastContainer} from 'react-toastify';
+import Home from "./Pages/Home";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
       path: '/',
       element:(<> <Layout /> <ScrollToTop /> </>),
       children: [
+        {path: '/', element: <Home />},
         {path: '/packages', element: <Packages />},
         {path: '/packages/:id', element: <ReviewPackages />},
         {path: '/attractions', element: <Attraction />},

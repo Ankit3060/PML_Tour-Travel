@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useLocation, useMatch } from 'react-router-dom';
+import { FaRegCopyright } from "react-icons/fa";
 
 function Footer() {
   const navigate = useNavigate();
@@ -103,6 +104,10 @@ function Footer() {
             <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" />
             <img src="https://img.icons8.com/color/48/000000/unionpay.png" alt="UnionPay" />
           </div>
+        </div>
+
+        <div className='mt-2 mb-0 flex gap-2 items-center mx-auto'>
+          <FaRegCopyright /> 2025 Magical vacation. All right Reserved
         </div>
       </div>
     </footer>

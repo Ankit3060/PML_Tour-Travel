@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import HashLoader from "react-spinners/HashLoader";
 
 function ThingsToDo() {
   const [data, setData] = useState([]);
@@ -52,17 +53,13 @@ const renderBox = (item, height = "h-[240px]") => {
   if (loading) {
     return (
       <div className="min-h-screen bg-[rgb(214, 228, 239)] flex items-center justify-center">
-        <div className="bg-white rounded-2xl p-8 shadow-xl">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading data...</p>
+            <HashLoader color="#2990d0" />
           </div>
-        </div>
       </div>
     );
   }
   
-
   return (
     <div className="px-4 ml-4 md:px-20 my-10" >
       <h1 className="text-4xl font-light mb-8">Things To Do In Dubai</h1>

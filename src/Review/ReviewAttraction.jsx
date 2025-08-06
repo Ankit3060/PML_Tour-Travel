@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReviewFooter from './ReviewFooter';
 
@@ -7,7 +7,8 @@ function ReviewAttraction() {
   const { attract } = state;
 
   const price = attract.price.filter((item)=>item.adultPrice).map((item)=>item.adultPrice)
-  // console.log(price[0])
+  const title = attract.title || 'Attraction Details';
+  const [eyeOpen, setEyeOpen] = useState(false);
 
   return (
     <div className="mb-20 flex flex-col">
@@ -75,8 +76,14 @@ function ReviewAttraction() {
         <p className='text-xl'>{attract.note}</p>
       </div>)}
 
-      <ReviewFooter price={price[0]}/>
-
+        <ReviewFooter 
+            price={price[0]} 
+            title={title} 
+            id={attract._id}
+            eyeOpen={eyeOpen} 
+            setEyeOpen={() => setEyeOpen(!eyeOpen)}
+            showEyeToggle={true}
+            />
     </div>
   );
 }

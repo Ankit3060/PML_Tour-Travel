@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SearchBanner from '../Components/SearchBanner'
-import AttractionCard from '../Components/AttractionCard'
 import LandComboCard from '../Components/LandComboCard';
+import HashLoader from 'react-spinners/HashLoader'
 
 function LandCombo() {
     const [data, setData] = useState([]);
@@ -24,15 +24,12 @@ function LandCombo() {
     }, [])
     // console.log(data)
 
-    if (loading) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-[rgb(214, 228, 239)] flex items-center justify-center">
-        <div className="bg-white rounded-2xl p-8 shadow-xl">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading data...</p>
+            <HashLoader color="#2990d0" />
           </div>
-        </div>
       </div>
     );
   }

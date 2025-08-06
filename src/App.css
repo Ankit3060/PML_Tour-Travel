@@ -2,6 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
 .font-style{
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -47,4 +56,34 @@
 .search-icon {
   color: white;
   font-size: 1.25rem;
+}
+
+
+/* h1,h2,h3,h4,h5,h6,p,li {
+    font-family: "Montserrat";
+} */
+
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(38, 38, 38, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parent {
+  background-color: white;
+  height: 80%;
+  width: 50%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }

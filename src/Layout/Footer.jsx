@@ -15,7 +15,6 @@ function Footer() {
   const navigate = useNavigate();
 
   const location = useLocation();
-  // const hiddenPaths = [`attraction/:id`];
   const hideFooter = /^\/attraction\/[^/]+$/.test(location.pathname) || 
     /^\/landcombos\/[^/]+$/.test(location.pathname) || /^\/packages\/[^/]+$/.test(location.pathname);
   if (hideFooter) return null;

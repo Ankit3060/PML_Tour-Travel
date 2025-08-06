@@ -11,7 +11,8 @@ function ReviewPackages() {
 
   const price = pkg.price.filter((item)=> item.travelerType === 'adult')
                          .map((item)=>item.price);
-  // console.log(price)
+                         
+  const title = pkg.title || 'Package Details';
 
   return (
     <div className="mb-20 flex flex-col">
@@ -131,7 +132,7 @@ function ReviewPackages() {
               ))}
             </ol> 
       </div>
-      <ReviewFooter price={price}/>
+      <ReviewFooter price={price} title={title} id={pkg._id} />
     </div>
   );
 }

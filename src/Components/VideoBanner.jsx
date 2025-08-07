@@ -5,7 +5,7 @@ import { FaClock } from "react-icons/fa6";
 import { AiFillSchedule } from "react-icons/ai";
 import { FaRegAddressCard } from "react-icons/fa";
 
-function VideoBanner({ title, buttonText, searchBar }) {
+function VideoBanner() {
   const navigate = useNavigate();
 
   return (
@@ -15,7 +15,6 @@ function VideoBanner({ title, buttonText, searchBar }) {
           loop
           autoPlay
           muted
-          playsInline
           className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
           src="https://res.cloudinary.com/ddxawuqwy/video/upload/v1705380585/ocvjdle2ubiq9f8pxif9.mp4"
         ></video>

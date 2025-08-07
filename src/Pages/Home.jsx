@@ -1,14 +1,72 @@
-import React from 'react'
-import VideoBanner from '../Components/VideoBanner'
-import Packages from './Packages'
+import React, { useEffect, useState } from "react";
+import VideoBanner from "../Components/VideoBanner";
+import Packages from "./Packages";
+import Card from "../Components/Card";
+import CardCategory from "../Components/CardCategory";
+import Shopping from "../Components/Shopping";
 
 function Home() {
+  const [data, setData] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://admin.magicalvacation.com/api/v1/packages"
+        );
+        const result = await res.json();
+        setData(result.data || []);
+      } catch (error) {
+        console.log("Error fetching packages:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
-    <>
-    <VideoBanner />
-    {/* <Packages /> */}
-    </>
-  )
+    <div className="">
+      <VideoBanner />
+      <div className="mt-8 p-4 ml-7  px-18">
+        <h1 className="text-4xl  font-light">Unveil the Oasis of Luxury</h1>
+        <p className="mt-4 text-lg">
+          Welcome to Dubai, a city where the desert's timeless beauty seamlessly
+          blends with modern luxury, creating an inviting haven for travelers
+          from around the world. As you arrive, the striking skyline, adorned
+          with towering marvels of architecture, welcomes you to a place where
+          dreams are transformed into reality. Explore the bustling souks, where
+          the air is filled with the scents of spices and the vibrant colors of
+          textiles beckon you to indulge in retail therapy like no other.
+          Alongside the traditional, savor exotic flavors from a global culinary
+          palette that has made Dubai a gastronomic paradise.
+        </p>
+      </div>
+
+      {/* <div className="p-4 px-20">
+      <h1 className="text-4xl font-light ml-5">Top Packages for Dubai</h1>
+      <div className="flex flex-wrap gap-7 p-10">
+        {data.map(pkg => (
+          <Card key={pkg._id} pkg={pkg} />
+        ))}
+      </div>
+    </div> */}
+
+      <div className="p-6 px-20 ">
+        <h1 className="text-4xl font-light ml-5">Top Packages for Dubai</h1>
+        <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
+          <CardCategory />
+        </div>
+      </div>
+      
+      
+      <div className="p-6 px-20 ">
+        <h1 className="text-4xl font-light ml-5">Shopping stops for you in Dubai</h1>
+        <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
+          <Shopping />
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Home
+export default Home;

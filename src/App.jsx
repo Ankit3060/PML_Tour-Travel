@@ -16,6 +16,8 @@ import ContactUs from './Pages/ContactUs';
 import ReviewLandCombo from './Review/ReviewLandCombo';
 import {ToastContainer} from 'react-toastify';
 import Home from "./Pages/Home";
+import PackagesFilter from './Components/PackagesFilter';
+import ReviewShopping from './Review/ReviewShopping';
 
 function App() {
 
@@ -36,6 +38,8 @@ function App() {
         {path: '/privacy', element: <Privacy />},
         {path: '/condition', element: <Conditions />},
         {path: '/contactus', element: <ContactUs />},
+        {path: '/packagebycategory/:categoryName', element: <PackagesFilter />},
+        {path: '/shoppingdetails/:id', element: <ReviewShopping />}
       ]
     }
   ])

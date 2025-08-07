@@ -6,7 +6,6 @@ function Header() {
   const logo =
     "https://res.cloudinary.com/ddxawuqwy/image/upload/v1708420873/packages/mvlogo_mc4ai4.png";
 
-  
   const isAttractionActive =
     location.pathname.startsWith("/attractions") ||
     location.pathname.startsWith("/attraction");
@@ -32,10 +31,11 @@ function Header() {
 
           <NavLink
             to="/packages"
-            className={({ isActive }) =>
-              `inline-block pb-3 ${
-                isActive ? "border-b-4 text-black border-black" : ""
-              } text-[#625d5d] hover:text-black text-[17.5px]`
+            className={() =>
+              location.pathname.startsWith("/packages") ||
+              location.pathname.startsWith("/packagebycategory")
+                ? "inline-block pb-3 border-b-4 text-black border-black text-[17.5px]"
+                : "inline-block pb-3 text-[#625d5d] hover:text-black text-[17.5px]"
             }
           >
             Packages

@@ -5,9 +5,9 @@ import { IoLocationOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
 
-function Shopping() {
+function ShoppingStops() {
   const [data, setData] = useState([]);
-  const [startIndex, setStartIndex] = useState(3);
+  const [startIndex, setStartIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -32,12 +32,12 @@ function Shopping() {
   const responsive = {
     extraLarge: {
       breakpoint: { max: 3000, min: 1324 },
-      items: 4,
+      items: 3,
       slideToSlide: 1,
     },
     large: {
       breakpoint: { max: 1324, min: 1005 },
-      items: 4,
+      items: 3,
       slideToSlide: 1,
     },
     medium: {
@@ -52,7 +52,7 @@ function Shopping() {
     },
   };
 
-  const remainingStops = data.slice(startIndex, startIndex + 7);
+  const topThreeStops = data.slice(startIndex, startIndex + 3);
 
   const handleClick = (item) => {
     navigate(`/shoppingdetails/${item._id}`, { state: { stop: item } });
@@ -67,36 +67,44 @@ function Shopping() {
   }
 
   return (
-    <div className="container">
+    <div className="container ">
       <Carousel
         responsive={responsive}
         infinite={true}
         itemClass="px-2"
         removeArrowOnDeviceType={["medium", "small"]}
       >
-        {remainingStops.map((item, index) => (
+        {topThreeStops.map((item, index) => (
           <div
             key={index}
-            className="overflow-hidden w-full bg-white shadow-md cursor-pointer hover:scale-105 transition-all duration-200 flex flex-col h-[400px]"
+            className="overflow-hidden w-full bg-white shadow-md cursor-pointer hover:scale-105 transition-all duration-200"
           >
-            <div className="relative h-[70%]">
+            <div className="relative">
               <img
                 src={item.bannerImage}
                 alt={item.name}
-                className="w-full h-full object-cover"
+                className="w-full h-80 object-cover"
                 onClick={() => handleClick(item)}
               />
 
-              <div className="absolute bottom-4 left-4 bg-white my-[-1.5rem] mx-[-1rem] px-4 py-3 flex items-center gap-1 text-sm">
+              <div className="absolute bottom-4 left-4 bg-white px-3 py-2 mx-[-1rem] my-[-1.2rem]  flex items-center gap-1 text-sm">
                 <IoLocationOutline className="text-gray-600" />
                 <span className="text-gray-800">{item.location}</span>
               </div>
             </div>
 
-            <div className="h-[30%] py-4 px-3 flex flex-col items-center justify-center">
-              <h3 className="text-xl font-semibold tracking-wide text-center line-clamp-2">
-                {item.title}
+            <div className="py-4 px-3 flex flex-col items-center justify-center">
+              <h3 className="text-xl font-semibold uppercase tracking-wide text-center">
+                {item.name}
               </h3>
+
+              {item.logoImage && (
+                <img
+                  src={item.logoImage}
+                  alt={`${item.name} logo`}
+                  className="mt-2 h-10 object-contain"
+                />
+              )}
             </div>
           </div>
         ))}
@@ -105,4 +113,4 @@ function Shopping() {
   );
 }
 
-export default Shopping;
+export default ShoppingStops;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IoLocationOutline } from "react-icons/io5";
 
-function ReviewShopping() {
+function ReviewShoppingStops() {
   const { state } = useLocation();
   const { stop } = state ;
   console.log(stop)
@@ -29,4 +29,4 @@ function ReviewShopping() {
   );
 }
 
-export default ReviewShopping;
+export default ReviewShoppingStops;

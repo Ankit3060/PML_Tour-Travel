@@ -3,7 +3,9 @@ import VideoBanner from "../Components/VideoBanner";
 import Packages from "./Packages";
 import Card from "../Components/Card";
 import CardCategory from "../Components/CardCategory";
+import ShoppingStops from "../Components/ShoppingStops";
 import Shopping from "../Components/Shopping";
+import Delicacies from "../Components/Delicacies";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -62,7 +64,23 @@ function Home() {
       <div className="p-6 px-20 ">
         <h1 className="text-4xl font-light ml-5">Shopping stops for you in Dubai</h1>
         <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
+          <ShoppingStops />
+        </div>
+      </div>
+      
+      
+      <div className="p-6 px-20 ">
+        <h1 className="text-4xl font-light ml-5">What else to do in Dubai</h1>
+        <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
           <Shopping />
+        </div>
+      </div>
+      
+      
+      <div className="p-6 px-20 ">
+        <h1 className="text-4xl font-light ml-5">Delicacies for Indians</h1>
+        <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
+          <Delicacies />
         </div>
       </div>
     </div>

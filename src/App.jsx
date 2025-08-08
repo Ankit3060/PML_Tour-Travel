@@ -17,7 +17,8 @@ import ReviewLandCombo from './Review/ReviewLandCombo';
 import {ToastContainer} from 'react-toastify';
 import Home from "./Pages/Home";
 import PackagesFilter from './Components/PackagesFilter';
-import ReviewShopping from './Review/ReviewShopping';
+import ReviewShoppingStops from './Review/ReviewShoppingStops';
+import ReviewDelicacies from "./Review/ReviewDelicacies"
 
 function App() {
 
@@ -39,7 +40,8 @@ function App() {
         {path: '/condition', element: <Conditions />},
         {path: '/contactus', element: <ContactUs />},
         {path: '/packagebycategory/:categoryName', element: <PackagesFilter />},
-        {path: '/shoppingdetails/:id', element: <ReviewShopping />}
+        {path: '/shoppingdetails/:id', element: <ReviewShoppingStops />},
+        {path: '/delicaciesdetails/:id', element: <ReviewDelicacies />}
       ]
     }
   ])

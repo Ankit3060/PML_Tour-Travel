@@ -68,7 +68,7 @@ const CustomArrow = ({ onClick, direction }) => {
   return (
     <button
       onClick={onClick}
-      className={`w-8 h-8 flex cursor-pointer items-center justify-center bg-white  rounded-full shadow-md hover:bg-gray-100 absolute top-2 mr-4 ${
+      className={`w-8 h-8 flex cursor-pointer items-center justify-center bg-white  rounded-full shadow-md hover:bg-gray-100 absolute top-[-3px] mr-4 ${
         direction === "right" ? "right-0" : "right-10"
       }`}
     >
@@ -91,6 +91,7 @@ return (
       removeArrowOnDeviceType={["medium", "small"]}
       customLeftArrow={<CustomArrow direction="left" />}
       customRightArrow={<CustomArrow direction="right" />}
+      className="h-[520px]"
     >
       {data.map((item, index) => (
         <div

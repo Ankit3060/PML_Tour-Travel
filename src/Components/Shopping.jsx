@@ -4,6 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import { IoLocationOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 function Shopping() {
   const [data, setData] = useState([]);
@@ -66,6 +67,23 @@ function Shopping() {
     );
   }
 
+  const CustomArrow = ({ onClick, direction }) => {
+    return (
+      <button
+        onClick={onClick}
+        className={`w-8 h-8 flex cursor-pointer items-center justify-center bg-white  rounded-full shadow-md hover:bg-gray-100 absolute top-3 mr-4 ${
+          direction === "right" ? "right-0" : "right-10"
+        }`}
+      >
+        {direction === "right" ? (
+          <IoIosArrowForward size={18} />
+        ) : (
+          <IoIosArrowBack size={18} />
+        )}
+      </button>
+    );
+  };
+
   return (
     <div className="container">
       <Carousel
@@ -73,6 +91,9 @@ function Shopping() {
         infinite={true}
         itemClass="px-2"
         removeArrowOnDeviceType={["medium", "small"]}
+        customLeftArrow={<CustomArrow direction="left" />}
+        customRightArrow={<CustomArrow direction="right" />}
+        className="h-[520px]"
       >
         {remainingStops.map((item, index) => (
           <div

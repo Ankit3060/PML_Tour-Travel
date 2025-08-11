@@ -43,7 +43,7 @@ function AttractionFilter() {
 
   return (
     <div>
-      <SearchBanner />
+      <SearchBanner title="Attractions in Dubai" buttonText={false} searchBar={true}/>
       <h1 className="text-4xl font-light ml-24 mt-5">
         {filteredAttractions[0]?.categoryName}
       </h1>

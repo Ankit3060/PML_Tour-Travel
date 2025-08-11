@@ -6,6 +6,10 @@ import CardCategory from "../Components/CardCategory";
 import ShoppingStops from "../Components/ShoppingStops";
 import Shopping from "../Components/Shopping";
 import Delicacies from "../Components/Delicacies";
+import Feedback from "../Components/Feedback";
+import ThingsToDo from "../Components/ThingsToDo";
+import TopPackages from "../Components/TopPackages";
+import BestPackages from "../Components/BestPackages";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -44,43 +48,59 @@ function Home() {
         </p>
       </div>
 
-      {/* <div className="p-4 px-20">
-      <h1 className="text-4xl font-light ml-5">Top Packages for Dubai</h1>
-      <div className="flex flex-wrap gap-7 p-10">
-        {data.map(pkg => (
-          <Card key={pkg._id} pkg={pkg} />
-        ))}
+      <div className="p-4 px-20">
+        <h1 className="text-4xl font-light ml-7 absolute mt-[1.5rem]">Best Packages for Dubai</h1>
+        <BestPackages packages={data} itemsToShow={3}/>
       </div>
-    </div> */}
 
-      <div className="p-6 px-20 ">
-        <h1 className="text-4xl font-light ml-5">Top Packages for Dubai</h1>
+
+      <div className="p-4 px-20 ">
+        <h1 className="text-4xl font-light ml-7 absolute mt-[-3rem]">
+          Choose what suits you the best
+        </h1>
         <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
           <CardCategory />
         </div>
       </div>
-      
-      
-      <div className="p-6 px-20 ">
-        <h1 className="text-4xl font-light ml-5">Shopping stops for you in Dubai</h1>
+
+      <div className="p-4 px-20">
+        <h1 className="text-4xl font-light ml-7 absolute mt-[1.5rem]">Top Packages for Dubai</h1>
+        <TopPackages packages={data} itemsToShow={4}/>
+      </div>
+
+      <div className="mt-[-3rem] px-20 ">
+        <h1 className="text-4xl font-light ml-7 absolute mt-[-1rem]">
+          Shopping stops for you in Dubai
+        </h1>
         <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
           <ShoppingStops />
         </div>
       </div>
-      
-      
+
       <div className="p-6 px-20 ">
-        <h1 className="text-4xl font-light ml-5">What else to do in Dubai</h1>
+        <h1 className="text-4xl font-light ml-7 absolute mt-0">What else to do in Dubai</h1>
         <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
           <Shopping />
         </div>
       </div>
-      
-      
-      <div className="p-6 px-20 ">
-        <h1 className="text-4xl font-light ml-5">Delicacies for Indians</h1>
+
+      <div className="px-20 ">
+        <h1 className="text-4xl font-light ml-7 absolute mt-[-2rem]">Delicacies for Indians</h1>
         <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
           <Delicacies />
+        </div>
+      </div>
+
+      <div>
+        <ThingsToDo />
+      </div>
+
+      <div className="px-20 ">
+        <h1 className="text-4xl font-light ml-5 text-center mt-5">
+          What people say about us
+        </h1>
+        <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
+          <Feedback />
         </div>
       </div>
     </div>

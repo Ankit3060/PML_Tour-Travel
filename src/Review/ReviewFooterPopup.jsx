@@ -33,18 +33,15 @@ function ReviewFooterPopup({ onClose, title }) {
       toast.error("Enter a valid email address.");
       return;
     }
-
     if (!city.trim()) {
       toast.error("City is required.");
       return;
     }
-
     if (!phone || phone.trim().length < 10) {
       toast.error("Phone number is required.");
       return;
-      }
-
-      if( peopleCount <= 0 && ChildrenCount <= 0 && InfantsCount <= 0) {
+    }
+    if (peopleCount <= 0 && ChildrenCount <= 0 && InfantsCount <= 0) {
       toast.error("Please select the number of people.");
       return;
     }
@@ -66,8 +63,8 @@ function ReviewFooterPopup({ onClose, title }) {
   };
 
   return (
-    <div className="main">
-      <div className="parent">
+    <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">
+      <div className="relative bg-white rounded-lg shadow-lg flex flex-col max-w-3xl w-full max-h-[90vh]">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-black text-3xl z-50 cursor-pointer"
@@ -75,12 +72,12 @@ function ReviewFooterPopup({ onClose, title }) {
           <IoMdCloseCircle />
         </button>
 
-        <div className="bg-[#ebf2fd] text-black font-semibold text-center text-lg p-4 shadow-sm z-10">
+        <div className="bg-[#ebf2fd] text-black font-semibold text-center text-sm md:text-lg p-3 md:p-4 shadow-sm z-10">
           Your journey to forever is a few steps away! Just help us with the
           details below.
         </div>
 
-        <div className="overflow-y-auto p-6 flex-1">
+        <div className="overflow-y-auto p-4 md:p-6 flex-1">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <h3 className="text-lg font-semibold mb-2 text-[rgb(63,66,102)]">
@@ -92,14 +89,14 @@ function ReviewFooterPopup({ onClose, title }) {
                   placeholder="Package Name"
                   defaultValue={title}
                   readOnly
-                  className="border rounded-md px-4 py-2 w-full"
+                  className="border rounded-md px-4 py-2 w-full text-sm"
                 />
                 <input
                   type="text"
                   placeholder="Enter your city"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="border rounded-md px-4 py-2 w-full"
+                  className="border rounded-md px-4 py-2 w-full text-sm"
                 />
                 <div className="md:col-span-2">
                   <label htmlFor="date" className="block text-sm mb-1">
@@ -118,102 +115,51 @@ function ReviewFooterPopup({ onClose, title }) {
               </div>
 
               <div className="flex flex-wrap gap-4 mt-4">
-                <div className="flex flex-col items-center">
-                  <label className="mb-1 text-sm">
-                    Adults (Age 13 & above)
-                  </label>
-                  <div className="flex overflow-hidden rounded-full border border-gray-300">
-                    <button
-                      type="button"
-                      className="bg-sky-400 text-white px-3 py-1 hover:bg-sky-500 cursor-pointer"
-                      onClick={() => {
-                        if (peopleCount > 0) {
-                          setPeopleCount(peopleCount - 1);
-                        }
-                      }}
-                    >
-                      -
-                    </button>
-                    <span className="bg-white text-black px-4 py-1 flex items-center justify-center">
-                      {peopleCount}
-                    </span>
-                    <button
-                      type="button"
-                      className="bg-sky-400 text-white px-3 py-1 hover:bg-sky-500 cursor-pointer"
-                      onClick={() => {
-                        if (peopleCount < 10) {
-                          setPeopleCount(peopleCount + 1);
-                        }
-                      }}
-                    >
-                      +
-                    </button>
+                {[
+                  {
+                    label: "Adults (Age 13 & above)",
+                    count: peopleCount,
+                    setCount: setPeopleCount,
+                  },
+                  {
+                    label: "Children (Ages 3 to 12)",
+                    count: ChildrenCount,
+                    setCount: setChildrenCount,
+                  },
+                  {
+                    label: "Infants (Age 0 to 3)",
+                    count: InfantsCount,
+                    setCount: setInfantsCount,
+                  },
+                ].map(({ label, count, setCount }, idx) => (
+                  <div
+                    key={idx}
+                    className="flex flex-col items-center flex-1 min-w-[120px]"
+                  >
+                    <label className="mb-1 text-xs md:text-sm text-center">
+                      {label}
+                    </label>
+                    <div className="flex overflow-hidden rounded-full border border-gray-300">
+                      <button
+                        type="button"
+                        className="bg-sky-400 text-white px-3 py-1 hover:bg-sky-500 cursor-pointer"
+                        onClick={() => setCount(Math.max(0, count - 1))}
+                      >
+                        -
+                      </button>
+                      <span className="bg-white text-black px-4 py-1 flex items-center justify-center">
+                        {count}
+                      </span>
+                      <button
+                        type="button"
+                        className="bg-sky-400 text-white px-3 py-1 hover:bg-sky-500 cursor-pointer"
+                        onClick={() => setCount(Math.min(10, count + 1))}
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
-                </div>
-
-                <div className="flex flex-col items-center">
-                  <label className="mb-1 text-sm">
-                    Children (Ages 3 to 12)
-                  </label>
-                  <div className="flex overflow-hidden rounded-full border border-gray-300">
-                    <button
-                      type="button"
-                      className="bg-sky-400 text-white px-3 py-1 hover:bg-sky-500 cursor-pointer  "
-                      onClick={() => {
-                        if (ChildrenCount > 0) {
-                          setChildrenCount(ChildrenCount - 1);
-                        }
-                      }}
-                    >
-                      -
-                    </button>
-                    <span className="bg-white text-black px-4 py-1 flex items-center justify-center">
-                      {ChildrenCount}
-                    </span>
-                    <button
-                      type="button"
-                      className="bg-sky-400 text-white px-3 py-1 hover:bg-sky-500 cursor-pointer  "
-                      onClick={() => {
-                        if (ChildrenCount < 10) {
-                          setChildrenCount(ChildrenCount + 1);
-                        }
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center">
-                  <label className="mb-1 text-sm">Infants (Age 0 to 3)</label>
-                  <div className="flex overflow-hidden rounded-full border border-gray-300">
-                    <button
-                      type="button"
-                      className="bg-sky-400 text-white px-3 py-1 hover:bg-sky-500 cursor-pointer"
-                      onClick={() => {
-                        if (InfantsCount > 0) {
-                          setInfantsCount(InfantsCount - 1);
-                        }
-                      }}
-                    >
-                      -
-                    </button>
-                    <span className="bg-white text-black px-4 py-1 flex items-center justify-center">
-                      {InfantsCount}
-                    </span>
-                    <button
-                      type="button"
-                      className="bg-sky-400 text-white px-3 py-1 hover:bg-sky-500  cursor-pointer"
-                      onClick={() => {
-                        if (InfantsCount < 10) {
-                          setInfantsCount(InfantsCount + 1);
-                        }
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -262,7 +208,7 @@ function ReviewFooterPopup({ onClose, title }) {
               </h3>
               <textarea
                 placeholder="Your Query..."
-                className="border rounded-md px-4 py-2 w-full resize-none h-20"
+                className="border rounded-md px-4 py-2 w-full resize-none h-20 text-sm"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
@@ -270,13 +216,12 @@ function ReviewFooterPopup({ onClose, title }) {
           </form>
         </div>
 
-        <div
-          className="border bg-[#324269] hover:bg-[#353d50] cursor-pointer flex justify-center"
-          onClick={handleSubmit}
-        >
+
+        <div className="border bg-[#324269] hover:bg-[#353d50] cursor-pointer flex justify-center">
           <button
             type="submit"
-            className="flex items-center gap-2 cursor-pointer text-white px-6 py-2 rounded-md text-lg font-semibold  transition duration-300"
+            onClick={handleSubmit}
+            className="flex items-center gap-2 text-white px-6 py-2 rounded-md text-base md:text-lg font-semibold transition duration-300 cursor-pointer"
           >
             Send Enquiry <FiArrowUpRight className="mt-[2px]" />
           </button>

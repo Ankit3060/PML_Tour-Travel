@@ -7,7 +7,7 @@ function AboutUs() {
       <SearchBanner title="About Us" buttonText={false} searchBar={false} />
       <div className="px-4 py-8 mt-0">
         <div className="flex flex-col md:flex-row gap-8 p-8 items-start">
-          <div className="flex-1 space-y-4">
+          <div className="flex-1 space-y-4 sm:m-auto">
             <h1 className="text-4xl font-bold mb-4">About Company</h1>
             <p>
               Alhusul Ealaa Lamhat Min Dubay! Get a Glimpse of Dubai with
@@ -47,7 +47,7 @@ function AboutUs() {
             </p>
           </div>
 
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0  aboutScreenImage">
             <img
               src="https://res.cloudinary.com/ddxawuqwy/image/upload/v1704172861/packages/pt5_mw3jmo.jpg"
               alt="About Magical Vacation"

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import VideoBanner from "../Components/VideoBanner";
-import Packages from "./Packages";
-import Card from "../Components/Card";
 import CardCategory from "../Components/CardCategory";
 import ShoppingStops from "../Components/ShoppingStops";
 import Shopping from "../Components/Shopping";
@@ -13,7 +11,8 @@ import BestPackages from "../Components/BestPackages";
 
 function Home() {
   const [data, setData] = useState([]);
-  const [categoryData, setCategoryData] = useState([]);
+  const [filteredPackages, setFilteredPackages] = useState([]);
+  const [searchActive, setSearchActive] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +22,7 @@ function Home() {
         );
         const result = await res.json();
         setData(result.data || []);
+        setFilteredPackages(result.data || []);
       } catch (error) {
         console.log("Error fetching packages:", error);
       }
@@ -30,79 +30,114 @@ function Home() {
     fetchData();
   }, []);
 
+  const handleSearch = (query) => {
+    const searchLower = query.toLowerCase();
+    if (!searchLower) {
+      setFilteredPackages(data);
+      setSearchActive(false);
+    } else {
+      const results = data.filter((pkg) =>
+        pkg.title?.toLowerCase().includes(searchLower)
+      );
+      setFilteredPackages(results);
+      setSearchActive(true);
+    }
+  };
+
   return (
-    <div className="">
-      <VideoBanner />
-      <div className="mt-8 p-4 ml-7  px-18">
-        <h1 className="text-4xl  font-light">Unveil the Oasis of Luxury</h1>
-        <p className="mt-4 text-lg">
-          Welcome to Dubai, a city where the desert's timeless beauty seamlessly
-          blends with modern luxury, creating an inviting haven for travelers
-          from around the world. As you arrive, the striking skyline, adorned
-          with towering marvels of architecture, welcomes you to a place where
-          dreams are transformed into reality. Explore the bustling souks, where
-          the air is filled with the scents of spices and the vibrant colors of
-          textiles beckon you to indulge in retail therapy like no other.
-          Alongside the traditional, savor exotic flavors from a global culinary
-          palette that has made Dubai a gastronomic paradise.
-        </p>
-      </div>
+    <div className="w-full">
+      <VideoBanner onSearch={handleSearch} />
 
-      <div className="p-4 px-20">
-        <h1 className="text-4xl font-light ml-7 absolute mt-[1.5rem]">Best Packages for Dubai</h1>
-        <BestPackages packages={data} itemsToShow={3}/>
-      </div>
+      {!searchActive && (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 lg:ml-[8rem] mt-12">
+          <h1 className="text-3xl sm:text-4xl font-light mb-6 sm:text-left">
+            Unveil the Oasis of Luxury
+          </h1>
+          <p className="text-base sm:text-lg leading-relaxed text-justify justify-around">
+            Welcome to Dubai, a city where the desert's timeless beauty
+            seamlessly blends with modern luxury, creating an inviting haven for
+            travelers from around the world. As you arrive, the striking
+            skyline, adorned with towering marvels of architecture, welcomes you
+            to a place where dreams are transformed into reality. Explore the
+            bustling souks, where the air is filled with the scents of spices
+            and the vibrant colors of textiles beckon you to indulge in retail
+            therapy like no other. Alongside the traditional, savor exotic
+            flavors from a global culinary palette that has made Dubai a
+            gastronomic paradise.
+          </p>
+        </section>
+      )}
 
+      {filteredPackages.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+          <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+            Best Packages for Dubai
+          </h2>
+          <BestPackages packages={filteredPackages} itemsToShow={3} />
+        </section>
+      )}
 
-      <div className="p-4 px-20 ">
-        <h1 className="text-4xl font-light ml-7 absolute mt-[-3rem]">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+        <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
           Choose what suits you the best
-        </h1>
-        <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
+        </h2>
+        <div className="flex flex-wrap justify-center sm:justify-start gap-7">
           <CardCategory />
         </div>
-      </div>
+      </section>
 
-      <div className="p-4 px-20">
-        <h1 className="text-4xl font-light ml-7 absolute mt-[1.5rem]">Top Packages for Dubai</h1>
-        <TopPackages packages={data} itemsToShow={4}/>
-      </div>
+      {filteredPackages.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+          <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+            Top Packages for Dubai
+          </h2>
+          <TopPackages packages={filteredPackages} itemsToShow={4} />
+        </section>
+      )}
 
-      <div className="mt-[-3rem] px-20 ">
-        <h1 className="text-4xl font-light ml-7 absolute mt-[-1rem]">
-          Shopping stops for you in Dubai
-        </h1>
-        <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
-          <ShoppingStops />
-        </div>
-      </div>
+      {!searchActive && (
+        <>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+            <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+              Shopping stops for you in Dubai
+            </h2>
+            <div className="flex flex-wrap justify-center sm:justify-start gap-7">
+              <ShoppingStops />
+            </div>
+          </section>
 
-      <div className="p-6 px-20 ">
-        <h1 className="text-4xl font-light ml-7 absolute mt-0">What else to do in Dubai</h1>
-        <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
-          <Shopping />
-        </div>
-      </div>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+            <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+              What else to do in Dubai
+            </h2>
+            <div className="flex flex-wrap justify-center sm:justify-start gap-7">
+              <Shopping />
+            </div>
+          </section>
 
-      <div className="px-20 ">
-        <h1 className="text-4xl font-light ml-7 absolute mt-[-2rem]">Delicacies for Indians</h1>
-        <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
-          <Delicacies />
-        </div>
-      </div>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+            <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+              Delicacies for Indians
+            </h2>
+            <div className="flex flex-wrap justify-center sm:justify-start gap-7">
+              <Delicacies />
+            </div>
+          </section>
 
-      <div>
-        <ThingsToDo />
-      </div>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+            <ThingsToDo />
+          </section>
 
-      <div className="px-20 ">
-        <h1 className="text-4xl font-light ml-5 text-center mt-5">
-          What people say about us
-        </h1>
-        <div className="flex flex-wrap gap-7 mt-7 ml-5 mr-0">
-          <Feedback />
-        </div>
-      </div>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-16">
+            <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center">
+              What people say about us
+            </h2>
+            <div className="flex flex-wrap justify-center gap-7">
+              <Feedback />
+            </div>
+          </section>
+        </>
+      )}
     </div>
   );
 }

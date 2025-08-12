@@ -9,7 +9,7 @@ function Privacy() {
         buttonText={false}
         searchBar={false}
       />
-      <div className=" mt-0 ml-14 mr-9 p-5">
+      <div className=" mt-0 ml-14 mr-9 p-5 privacy">
         <h1 className="text-4xl  mt-5">Privacy</h1>
         <p className="mt-4 mb-8 text-lg">
           This privacy policy applies only to those activities as specified on

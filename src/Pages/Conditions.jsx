@@ -9,7 +9,10 @@ function Conditions() {
         searchBar={false}
         buttonText={false}
       />
-      <div className="mt-0 ml-14 mr-9 p-5">
+      <div className="mt-0 ml-14 mr-9 p-5 
+      
+      
+      ">
         <h1 className="text-4xl ">
           Welcome to Magical Vacation Travel and Tourism LLC!!
         </h1>

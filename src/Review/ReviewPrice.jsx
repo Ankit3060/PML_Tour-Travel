@@ -19,12 +19,11 @@ const ReviewPrice = ({ visible, isVisible, id }) => {
     };
     fetchData();
   }, [id])
-//   console.log(data)
 
   return (
     <>
       {isVisible && (
-        <div className="flex fixed  justify-center mt-4 mb-0 bottom-[4.5rem] left-[19rem] transition-isVisible duration-400 ">
+        <div className="flex smallScreen fixed justify-center mt-4 mb-0 bottom-[4.5rem] left-[19rem] transition-isVisible duration-400 ">
           <table className="border-collapse border border-green-500 text-center shadow-lg">
             <thead>
               <tr className="bg-teal-100">

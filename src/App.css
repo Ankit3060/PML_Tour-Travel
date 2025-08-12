@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&family=Playball&display=swap'); */
 
 .font-style{
     font-family: "Montserrat", sans-serif;
@@ -85,4 +84,25 @@
     font-size: 6rem;
     font-weight: normal;
     text-shadow: 0 0 15px #000;
+}
+
+@media screen and (max-width: 640px) {
+  .smallScreen{
+    left: 0;
+    bottom: 6.2rem;
+  }
+  .privacy{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .termAndConditions{
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .aboutScreenImage{
+    width: 300px;
+  }
 }

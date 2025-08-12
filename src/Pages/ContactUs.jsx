@@ -17,9 +17,9 @@ function ContactUs() {
     e.preventDefault();
     
     if (!phone || phone.trim() === "") {
-    toast.error("Phone number is required.");
-    return;
-  }
+      toast.error("Phone number is required.");
+      return;
+    }
 
     const formData = {
       name: name,
@@ -33,79 +33,129 @@ function ContactUs() {
   return (
     <>
       <SearchBanner title="Contact Us" buttonText={false} searchBar={false} />
-      <div className="flex flex-row p-8">
-        <div className="flex-1 p-4">
-          <h2 className="text-3xl mb-2">Office Address</h2>
-          <p className="flex items-center gap-3">
-            <FaHome />
-            <span className="font-semibold">Dubai Office:</span>202 Rania
-            Business Center Al Barsha First, Dubai, UAE
-          </p>
-          <p className="flex items-center gap-3">
-            <IoIosCall /> +971 444 52101
-          </p>
-          <p className="flex items-center gap-3">
-            <MdMailOutline />{" "}
-            <a href="mailto:info@magicalvacation.com" className="underline">
-              info@magicalvacation.com
-            </a>
-          </p>
+      
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 p-4 sm:p-6 md:p-8 max-w-7xl mx-auto">
+        
+        <div className="flex-1 order-2 lg:order-1">
+          <div className="bg-gray-50 p-4 sm:p-6 rounded-lg">
+            <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 text-gray-800 font-semibold">Office Address</h2>
+            
+            <div className="space-y-4 sm:space-y-5">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <FaHome className=" mt-1 text-lg sm:text-xl flex-shrink-0" />
+                <div>
+                  <span className="font-semibold text-gray-800 text-sm sm:text-base">Dubai Office:</span>
+                  <p className="text-gray-700 text-sm sm:text-base mt-1">
+                    202 Rania Business Center Al Barsha First, Dubai, UAE
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3 sm:gap-4">
+                <IoIosCall className="text-lg sm:text-xl flex-shrink-0" />
+                <a 
+                  href="tel:+971444552101" 
+                  className="text-gray-700 hover:text-blue-500 transition-colors text-sm sm:text-base"
+                >
+                  +971 444 52101
+                </a>
+              </div>
+              
+              <div className="flex items-center gap-3 sm:gap-4">
+                <MdMailOutline className=" text-lg sm:text-xl flex-shrink-0" />
+                <a 
+                  href="mailto:info@magicalvacation.com" 
+                  className="text-blue-500 hover:text-blue-600 underline transition-colors text-sm sm:text-base break-all"
+                >
+                  info@magicalvacation.com
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="flex-1 p-4 border-0 shadow-2xl">
-          <form action="" onSubmit={handleSubmit}>
-            <h2 className="text-2xl mb-2">Send us a query</h2>
-            <label className="block mb-2">Name:</label>
-            <input
-              type="text"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your name.."
-              className="border border-gray-300 p-2 rounded mb-4 w-full"
-            />
-            <label className="block mb-2">Email:</label>
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email.."
-              className="border border-gray-300 p-2 rounded mb-4 w-full"
-            />
-            <label className="block mb-2">Mobile:</label>
-            <PhoneInput
-              country={"in"}
-              value={phone}
-              onChange={setPhone}
-              enableSearch
-              required
-              inputStyle={{
-                width: "100%",
-                height: "38px",
-                borderRadius: "0.375rem",
-                border: "1px solid #d1d5db",
-                fontSize: "14px",
-                paddingLeft: "48px",
-              }}
-              containerStyle={{
-                width: "100%",
-              }}
-            />
-            <label className="block mb-2">Message:</label>
-            <textarea
-              placeholder="Write something.."
-              className="border border-gray-300 p-2 rounded mb-4 w-full"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            ></textarea>
-            <button
-              type="submit"
-              className="bg-blue-400 hover:bg-blue-500 text-white cursor-pointer p-2 rounded"
-            >
-              Submit
-            </button>
-          </form>
+        <div className="flex-1 order-1 lg:order-2">
+          <div className="bg-white border border-gray-200 shadow-lg rounded-lg p-4 sm:p-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+              <h2 className="text-xl sm:text-2xl mb-4 text-gray-800 font-semibold">Send us a query</h2>
+              
+              <div>
+                <label className="block mb-2 text-sm sm:text-base font-medium text-gray-700">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name.."
+                  className="border border-gray-300 p-2 sm:p-3 rounded-md w-full text-sm sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                />
+              </div>
+              
+              <div>
+                <label className="block mb-2 text-sm sm:text-base font-medium text-gray-700">
+                  Email:
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email.."
+                  className="border border-gray-300 p-2 sm:p-3 rounded-md w-full text-sm sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                />
+              </div>
+              
+              <div>
+                <label className="block mb-2 text-sm sm:text-base font-medium text-gray-700">
+                  Mobile:
+                </label>
+                <PhoneInput
+                  country={"in"}
+                  value={phone}
+                  onChange={setPhone}
+                  enableSearch
+                  required
+                  inputStyle={{
+                    width: "100%",
+                    height: window.innerWidth < 640 ? "44px" : "48px",
+                    borderRadius: "0.375rem",
+                    border: "1px solid #d1d5db",
+                    fontSize: window.innerWidth < 640 ? "14px" : "16px",
+                    paddingLeft: "48px",
+                  }}
+                  containerStyle={{
+                    width: "100%",
+                    marginBottom: "0",
+                  }}
+                  buttonStyle={{
+                    borderRadius: "0.375rem 0 0 0.375rem",
+                  }}
+                />
+              </div>
+              
+              <div>
+                <label className="block mb-2 text-sm sm:text-base font-medium text-gray-700">
+                  Message:
+                </label>
+                <textarea
+                  placeholder="Write something.."
+                  rows={4}
+                  className="border border-gray-300 p-2 sm:p-3 rounded-md w-full text-sm sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-vertical min-h-[100px]"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+              </div>
+              
+              <button
+                type="submit"
+                className="w-full sm:w-auto bg-blue-500 cursor-pointer hover:bg-blue-600 text-white font-medium py-2 sm:py-3 px-6 sm:px-8 rounded-md transition-colors duration-200 text-sm sm:text-base focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                Submit Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </>

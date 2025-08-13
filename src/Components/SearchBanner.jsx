@@ -16,14 +16,14 @@ function SearchBanner({ title, buttonText, searchBar, onSearch }) {
 
   return (
     <div
-      className="w-full h-[400px] bg-cover bg-center flex flex-col items-center justify-center text-white px-4"
+      className="w-full h-[200px] sm:h-[400px] bg-cover bg-center flex flex-col items-center justify-center text-white px-4"
       style={{ backgroundImage: `url(${bgSearch})` }}
     >
       <h1 className="text-4xl mb-6 text-center">{title}</h1>
 
       {searchBar && (
         <form onSubmit={handleSubmit} className="w-full flex justify-center">
-          <div className="flex items-center w-full max-w-2xl rounded-full overflow-hidden px-4 py-2 text-white border border-white backdrop-sepia-0 bg-white/20 shadow-md">
+          <div className="flex items-center sm:w-full w-[80%] h-[1.9rem] sm:h-[2.5rem] max-w-2xl rounded-full overflow-hidden px-4 py-2 text-white border border-white backdrop-sepia-0 bg-white/20 shadow-md">
             <input
               type="text"
               placeholder="Search..."
@@ -39,7 +39,7 @@ function SearchBanner({ title, buttonText, searchBar, onSearch }) {
       )}
 
       {buttonText && (
-        <div className="flex gap-4 mt-8 flex-wrap justify-center">
+        <div className="hidden lg:flex gap-4 mt-8 flex-wrap justify-center">
           <button
             onClick={() => navigate("/packages")}
             className="bg-[#0583b4] hover:bg-blue-600 cursor-pointer flex items-center gap-2  text-white px-6 py-1 rounded-full text-sm font-medium"

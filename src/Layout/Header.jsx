@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoClose } from "react-icons/io5";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +16,6 @@ function Header() {
   return (
     <nav className="bg-white px-6 py-3 shadow-md sticky top-0 z-50">
       <div className="max-w-screen-xl mx-auto flex justify-between items-center">
-        
         <Link to="/">
           <img src={logo} alt="Logo" className="h-14 w-auto" />
         </Link>
@@ -46,9 +47,7 @@ function Header() {
           <Link
             to="/attractions"
             className={`inline-block pb-3 ${
-              isAttractionActive
-                ? "border-b-4 text-black border-black"
-                : ""
+              isAttractionActive ? "border-b-4 text-black border-black" : ""
             } text-[#625d5d] hover:text-black text-[17.5px]`}
           >
             Attractions
@@ -81,74 +80,65 @@ function Header() {
           className="md:hidden text-2xl"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          ☰
+          {isMenuOpen ? <IoClose /> : <GiHamburgerMenu />}
         </button>
       </div>
 
-
       <div
-        className={`md:hidden overflow-hidden transition-all duration-400 ${
-          isMenuOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+        className={`md:hidden absolute bg-white shadow-lg transition-all duration-300 overflow-hidden ${
+          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
+        style={{ top: "64px", left: "1rem" }}
       >
-        <div className="flex flex-col space-y-3 font-medium text-gray-800">
+        <div className="flex flex-col space-y-3 font-medium text-gray-800 p-4 w-max">
           <NavLink
             to="/"
             onClick={() => setIsMenuOpen(false)}
-            className={`pb-2 ${
-              location.pathname === "/"
-                ? "text-black"
-                : ""
-            } text-[#625d5d] hover:text-black`}
+            className={`${
+              location.pathname === "/" ? "font-bold text-black border-b border-black" : ""
+            } hover:text-black`}
           >
             Home
           </NavLink>
-
           <NavLink
             to="/packages"
             onClick={() => setIsMenuOpen(false)}
-            className={`pb-2 ${
-              location.pathname.startsWith("/packages") ||
-              location.pathname.startsWith("/packagebycategory")
-                ? "text-black"
+            className={`${
+              location.pathname.startsWith("/packages")
+                ? "font-bold text-black border-b border-black"
                 : ""
-            } text-[#625d5d] hover:text-black`}
+            } hover:text-black`}
           >
             Packages
           </NavLink>
-
           <NavLink
             to="/attractions"
             onClick={() => setIsMenuOpen(false)}
-            className={`pb-2 ${
-              isAttractionActive
-                ? "text-black"
-                : ""
-            } text-[#625d5d] hover:text-black`}
+            className={`${
+              isAttractionActive ? "font-bold text-black border-b border-black" : ""
+            } hover:text-black`}
           >
             Attractions
           </NavLink>
-
           <NavLink
             to="/landcombos"
             onClick={() => setIsMenuOpen(false)}
-            className={`pb-2 ${
+            className={`${
               location.pathname.startsWith("/landcombos")
-                ? "text-black"
+                ? "font-bold text-black border-b border-black"
                 : ""
-            } text-[#625d5d] hover:text-black`}
+            } hover:text-black`}
           >
             Land Combos
           </NavLink>
-
           <NavLink
             to="/contactus"
             onClick={() => setIsMenuOpen(false)}
-            className={`pb-2 ${
+            className={`${
               location.pathname.startsWith("/contactus")
-                ? "text-black "
+                ? "font-bold text-black border-b border-black"
                 : ""
-            } text-[#625d5d] hover:text-black`}
+            } hover:text-black`}
           >
             Contact us
           </NavLink>

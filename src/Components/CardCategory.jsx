@@ -42,7 +42,7 @@ if (loading) {
 
   return (
     <>
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center sm:gap-4">
         {topSixPackages.map((item) => {
           return (
             <div

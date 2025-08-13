@@ -49,11 +49,11 @@ function Home() {
       <VideoBanner onSearch={handleSearch} />
 
       {!searchActive && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 lg:ml-[8rem] mt-12">
-          <h1 className="text-3xl sm:text-4xl font-light mb-6 sm:text-left">
+        <section className="max-w-5xl px-4 sm:px-6 xl:px-0 xl:ml-[8rem] mt-12">
+          <h1 className="text-3xl sm:text-4xl font-light mb-6 sm:text-left xl:ml-[-1rem]">
             Unveil the Oasis of Luxury
           </h1>
-          <p className="text-base sm:text-lg leading-relaxed text-justify justify-around">
+          <p className="text-base xl:ml-[-1rem] xl:mr-[-14rem] sm:text-lg leading-relaxed text-justify">
             Welcome to Dubai, a city where the desert's timeless beauty
             seamlessly blends with modern luxury, creating an inviting haven for
             travelers from around the world. As you arrive, the striking
@@ -69,26 +69,26 @@ function Home() {
       )}
 
       {filteredPackages.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-          <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+        <section className="max-w-7xl mx-auto px-4 lg:px-8 mt-16">
+          <h2 className="text-3xl sm:text-4xl xl:ml-[-2.5rem] font-light sm:text-left">
             Best Packages for Dubai
           </h2>
           <BestPackages packages={filteredPackages} itemsToShow={3} />
         </section>
       )}
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-        <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+      <section className="max-w-7xl mx-auto px-4 lg:px-8 ">
+        <h2 className="text-3xl sm:text-4xl xl:ml-[-2rem] font-light sm:text-left mb-6 mt-4">
           Choose what suits you the best
         </h2>
-        <div className="flex flex-wrap justify-center sm:justify-start gap-7">
+        <div className="flex flex-wrap justify-center sm:justify-start gap-7 xl:ml-[-2rem] xl:mr-[-3rem]">
           <CardCategory />
         </div>
       </section>
 
       {filteredPackages.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-          <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+        <section className="max-w-7xl mx-auto px-4 lg:px-8 mt-16">
+          <h2 className="text-3xl sm:text-4xl xl:ml-[-2rem] font-light sm:text-left mb-6">
             Top Packages for Dubai
           </h2>
           <TopPackages packages={filteredPackages} itemsToShow={4} />
@@ -97,8 +97,8 @@ function Home() {
 
       {!searchActive && (
         <>
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-            <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+          <section className="max-w-7xl mx-auto px-4 lg:px-8 mt-16">
+            <h2 className="text-2xl ml-2 sm:text-4xl xl:ml-[-1.5rem] mt-[-2rem] sm:mt-[-4rem] font-light sm:text-left">
               Shopping stops for you in Dubai
             </h2>
             <div className="flex flex-wrap justify-center sm:justify-start gap-7">
@@ -106,8 +106,8 @@ function Home() {
             </div>
           </section>
 
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-            <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+          <section className="max-w-7xl mx-auto px-4 lg:px-8 mt-16">
+            <h2 className="text-2xl ml-2 sm:text-4xl xl:ml-[-1.5rem] mt-[-2rem] sm:mt-[-4rem] font-light sm:text-left">
               What else to do in Dubai
             </h2>
             <div className="flex flex-wrap justify-center sm:justify-start gap-7">
@@ -115,8 +115,8 @@ function Home() {
             </div>
           </section>
 
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-            <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center sm:text-left">
+          <section className="max-w-7xl mx-auto px-4 lg:px-8 mt-16">
+            <h2 className="text-2xl ml-2 sm:text-4xl xl:ml-[-1.5rem] mt-[-2rem] sm:mt-[-4rem] font-light sm:text-left">
               Delicacies for Indians
             </h2>
             <div className="flex flex-wrap justify-center sm:justify-start gap-7">
@@ -124,11 +124,11 @@ function Home() {
             </div>
           </section>
 
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+          <section className="xl:ml-[3.5rem] xl:mr-[1rem] sm:mt-[-3rem]">
             <ThingsToDo />
           </section>
 
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-16">
+          <section className="max-w-7xl mx-auto px-4 lg:px-8 mt-16">
             <h2 className="text-3xl sm:text-4xl font-light mb-6 text-center">
               What people say about us
             </h2>

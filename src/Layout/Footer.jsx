@@ -105,14 +105,14 @@ function Footer() {
 
             <div className="w-full md:w-1/2">
               <h2 className="text-lg mb-4">Subscribe to Our Newsletter:</h2>
-              <div className="flex flex-col sm:flex-row gap-2">
+              <div className="flex flex-row gap-2">
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="px-4 py-2 rounded bg-white border flex-1 mr-[-8.5px]"
+                  className="px-4 py-2  bg-white border flex-1 mr-[-8.5px]"
                   maxLength={40}
                 />
-                <button className="bg-sky-400 px-4 py-2 ">Contact Now</button>
+                <button className="bg-sky-400 px-4 py-2">Contact Now</button>
               </div>
             </div>
           </div>

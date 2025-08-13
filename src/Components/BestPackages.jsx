@@ -11,10 +11,9 @@ const BestPackages = ({ packages }) => {
   const navigate = useNavigate();
 
   const responsive = {
-    extraLarge: { breakpoint: { max: 3000, min: 1324 }, items: 3 },
-    large: { breakpoint: { max: 1324, min: 1005 }, items: 3 },
-    medium: { breakpoint: { max: 1005, min: 700 }, items: 2 },
-    small: { breakpoint: { max: 700, min: 0 }, items: 1 },
+    desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
+    tablet: { breakpoint: { max: 1024, min: 640 }, items: 2 },
+    mobile: { breakpoint: { max: 640, min: 0 }, items: 1 },
   };
 
   const handleClick = (pkg) => {
@@ -37,76 +36,86 @@ const BestPackages = ({ packages }) => {
   );
 
   return (
-    <div className="container py-10 ml-1">
-      <Carousel
-        responsive={responsive}
-        infinite
-        arrows
-        containerClass="carousel-container"
-        itemClass="px-4"
-        customLeftArrow={<CustomArrow direction="left" />}
-        customRightArrow={<CustomArrow direction="right" />}
-        className="h-[580px]"
-      >
+    <div className="container ">
+      <div className="hidden sm:block md:gap-[10rem] md:ml-[-3rem] xl:ml-[-4rem] xl:mr-[-4rem]">
+        <Carousel
+          responsive={responsive}
+          infinite
+          arrows
+          containerClass="carousel-container"
+          itemClass="px-4"
+          customLeftArrow={<CustomArrow direction="left" />}
+          customRightArrow={<CustomArrow direction="right" />}
+          className="h-[580px]"
+        >
+          {packages.map((pkg, index) => (
+            <PackageCard key={index} pkg={pkg} handleClick={handleClick} />
+          ))}
+        </Carousel>
+      </div>
+
+      <div className="block sm:hidden space-y-6 mt-4">
         {packages.map((pkg, index) => (
-          <div key={index}>
-            <div
-              className="w-[400px] h-[29rem] bg-[#f4f4f6] rounded-md hover:scale-105 cursor-pointer duration-200 mx-auto"
-              onClick={() => handleClick(pkg)}
-            >
-              <img
-                src={pkg.thumbnailImage}
-                alt={pkg.categoryName}
-                className="h-70 w-full object-cover rounded-t-md"
-              />
-
-              <div className="p-4">
-                <h2 className="font-semibold text-xl mb-2">{pkg.title}</h2>
-
-                <div className="flex items-center gap-1 text-yellow-500 mb-2 ml-[-8px]">
-                  <span className="text-gray-600 ml-2">Ratings</span>
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStarHalfAlt />
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3 text-base text-gray-600 mb-2 mt-5">
-                  <div className="flex items-center gap-1">
-                    <FaClock />
-                    <span>3 Hrs</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <FaCar />
-                    <span>Pickup offered</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <FaGlobe />
-                    <span>Eng</span>
-                  </div>
-                </div>
-
-                <div className="text-lg flex justify-between mt-4">
-                  <div className="flex items-center">
-                    <span>Price per person: </span>
-                    <span className="text-green-600 font-medium ml-1">
-                      {pkg.price
-                        .filter((item) => item.travelerType === "adult")
-                        .map((item, i) => (
-                          <div key={i}>AED {item.price}</div>
-                        ))}
-                    </span>
-                  </div>
-                  <MdArrowOutward className="text-2xl" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <PackageCard key={index} pkg={pkg} handleClick={handleClick} />
         ))}
-      </Carousel>
+      </div>
     </div>
   );
 };
+
+const PackageCard = ({ pkg, handleClick }) => (
+  <div
+    className="w-full sm:ml-6 xl:ml-3 sm:w-[400px] h-[29rem] bg-[#f4f4f6] rounded-md hover:scale-105 cursor-pointer duration-200 mx-auto"
+    onClick={() => handleClick(pkg)}
+  >
+    <img
+      src={pkg.thumbnailImage}
+      alt={pkg.categoryName}
+      className="h-70 w-full object-cover rounded-t-md"
+    />
+
+    <div className="p-4">
+      <h2 className="font-semibold text-xl mb-2">{pkg.title}</h2>
+
+      <div className="flex items-center gap-1 text-yellow-500 mb-2 ml-[-8px]">
+        <span className="text-gray-600 ml-2">Ratings</span>
+        <FaStar />
+        <FaStar />
+        <FaStar />
+        <FaStar />
+        <FaStarHalfAlt />
+      </div>
+
+      <div className="flex flex-wrap items-center gap-3 text-base text-gray-600 mb-2 mt-5">
+        <div className="flex items-center gap-1">
+          <FaClock />
+          <span>3 Hrs</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <FaCar />
+          <span>Pickup offered</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <FaGlobe />
+          <span>Eng</span>
+        </div>
+      </div>
+
+      <div className="text-lg flex justify-between mt-4">
+        <div className="flex items-center">
+          <span>Price per person: </span>
+          <span className="text-green-600 font-medium ml-1">
+            {pkg.price
+              .filter((item) => item.travelerType === "adult")
+              .map((item, i) => (
+                <div key={i}>AED {item.price}</div>
+              ))}
+          </span>
+        </div>
+        <MdArrowOutward className="text-2xl" />
+      </div>
+    </div>
+  </div>
+);
 
 export default BestPackages;

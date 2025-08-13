@@ -83,7 +83,7 @@ function Feedback() {
 
             <div className="max-w-3xl text-gray-600 leading-relaxed relative">
               <FaQuoteLeft className="text-3xl text-gray-400 absolute -top-2 -left-6" />
-              <p className="px-6">
+              <p className="px-6 text-justify">
                 {item.comment}
               </p>
             </div>

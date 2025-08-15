@@ -1,12 +1,40 @@
-# React + Vite
+# Magical Vacation Clone (Educational Purpose Only)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 About
+This project is a **non-commercial clone** of the "Magical Vacation" website, created **solely for educational and learning purposes**.  
+It was built to practice and improve my skills in **[MERN stack / JavaScript / HTML / CSS]**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚠️ Disclaimer
+- This project is **NOT affiliated with, endorsed by, or connected to** the official Magical Vacation brand or its owners.  
+- All rights, trademarks, and copyrights for original content belong to their respective owners.  
+- This clone is **for personal portfolio and educational demonstration only**.  
+- No commercial use, monetization, or redistribution of the original content is intended or allowed.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+- React
+- JavaScript
+- HTML
+- CSS
+
+---
+
+## 🎯 Purpose
+The main goal of creating this project was to:
+1. Practice front-end  skills.
+2. Learn website layout, styling, and responsive design techniques.
+3. Understand and replicate UI/UX patterns.
+
+---
+
+## 📂 Status
+The live deployment has been **removed** to comply with Vercel's guidelines.  
+You can still view the source code here for reference and learning purposes.
+
+---
+
+## 📜 License
+This repository is for **educational use only**. Do not use this project for commercial purposes.
